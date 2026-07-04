@@ -1,0 +1,738 @@
+/* Memora - Modern Productivity Platform Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #1a1a2e;
+    --bg-secondary: #16213e;
+    --bg-tertiary: #0f3460;
+    --accent: #e94560;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --border: #2a2a4a;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+.logo h1 {
+    color: var(--accent);
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    padding: 12px 16px;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.nav-btn:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.nav-btn.active {
+    background-color: var(--accent);
+    color: var(--text-primary);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.search-bar input {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 10px 16px;
+    border-radius: 8px;
+    width: 300px;
+    font-size: 14px;
+}
+
+.search-bar input::placeholder {
+    color: var(--text-secondary);
+}
+
+.user-name {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* Tool Sections */
+.tool-section {
+    display: none;
+}
+
+.tool-section.active {
+    display: block;
+}
+
+.tool-section h2 {
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Dashboard */
+.dashboard-widgets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.widget {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.widget h3 {
+    color: var(--accent);
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+/* Calculator */
+.calculator {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 300px;
+}
+
+.calc-display {
+    width: 100%;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 15px;
+    font-size: 24px;
+    text-align: right;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.calc-btn {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.calc-btn:hover {
+    background-color: var(--accent);
+}
+
+.calc-btn.operator {
+    background-color: var(--accent);
+}
+
+.calc-btn.equals {
+    grid-column: span 2;
+    background-color: var(--accent);
+}
+
+.calc-btn.clear {
+    background-color: #ff6b6b;
+}
+
+/* Forms */
+.pm-form, .note-form, .task-form {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.pm-form input, .note-form input, .note-form textarea, .task-form input {
+    width: 100%;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.pm-form textarea, .note-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.pm-form button, .note-form button, .task-form button {
+    background-color: var(--accent);
+    color: var(--text-primary);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.pm-form button:hover, .note-form button:hover, .task-form button:hover {
+    background-color: #ff6b6b;
+}
+
+/* Lists */
+.pm-list, .notes-list, .task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pm-item, .note-item {
+    background-color: var(--bg-secondary);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pm-item button, .note-item button {
+    background-color: #ff6b6b;
+    color: var(--text-primary);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.task-item {
+    background-color: var(--bg-secondary);
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.task-item.completed {
+    opacity: 0.6;
+    text-decoration: line-through;
+}
+
+.task-item input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.task-item button {
+    background-color: #ff6b6b;
+    color: var(--text-primary);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: auto;
+}
+
+/* Calendar */
+.calendar {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 400px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header button {
+    background-color: var(--accent);
+    color: var(--text-primary);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-day-header {
+    text-align: center;
+    font-weight: bold;
+    color: var(--accent);
+    padding: 8px;
+}
+
+.calendar-day {
+    text-align: center;
+    padding: 10px;
+    background-color: var(--bg-tertiary);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.calendar-day:hover {
+    background-color: var(--accent);
+}
+
+.calendar-day.empty {
+    background: none;
+}
+
+/* Weather */
+.weather {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 400px;
+}
+
+.weather input {
+    width: 100%;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.weather button {
+    background-color: var(--accent);
+    color: var(--text-primary);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.weather-display {
+    background-color: var(--bg-tertiary);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.weather-display h3 {
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+
+/* Clock */
+.clock {
+    background-color: var(--bg-secondary);
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 400px;
+}
+
+.clock-display {
+    font-size: 48px;
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-family: 'Courier New', monospace;
+}
+
+.clock-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.clock-controls button {
+    background-color: var(--accent);
+    color: var(--text-primary);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* QR Generator */
+.qr-generator {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 400px;
+}
+
+.qr-generator input {
+    width: 100%;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.qr-generator button {
+    background-color: var(--accent);
+    color: var(--text-primary);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.qr-display {
+    background-color: var(--bg-tertiary);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Password Generator */
+.password-generator {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 400px;
+}
+
+.pg-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.pg-options label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pg-options input[type="number"] {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 8px;
+    border-radius: 6px;
+    width: 80px;
+}
+
+.pg-options input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.password-generator button {
+    background-color: var(--accent);
+    color: var(--text-primary);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.pg-result {
+    display: flex;
+    gap: 10px;
+}
+
+.pg-result input {
+    flex: 1;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 10px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+}
+
+.pg-result button {
+    background-color: var(--accent);
+    color: var(--text-primary);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Unit Converter */
+.unit-converter {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 400px;
+}
+
+.unit-converter select,
+.unit-converter input {
+    width: 100%;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.unit-converter span {
+    display: block;
+    text-align: center;
+    margin: 10px 0;
+    color: var(--text-secondary);
+}
+
+.unit-converter button {
+    background-color: var(--accent);
+    color: var(--text-primary);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Currency Converter */
+.currency-converter {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 400px;
+}
+
+.currency-converter input,
+.currency-converter select {
+    width: 100%;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.currency-converter span {
+    display: block;
+    text-align: center;
+    margin: 10px 0;
+    color: var(--text-secondary);
+}
+
+.currency-converter button {
+    background-color: var(--accent);
+    color: var(--text-primary);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.cc-result {
+    background-color: var(--bg-tertiary);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 18px;
+    color: var(--accent);
+}
+
+/* Text Tools */
+.text-tools {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.text-tools textarea {
+    width: 100%;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 15px;
+    border-radius: 8px;
+    min-height: 200px;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 15px;
+    resize: vertical;
+}
+
+.tt-stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+}
+
+.tt-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tt-actions button {
+    background-color: var(--accent);
+    color: var(--text-primary);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.tt-actions button:hover {
+    background-color: #ff6b6b;
+}
+
+/* Random Generator */
+.random-generator {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 400px;
+}
+
+.rg-number,
+.rg-uuid,
+.rg-color {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.rg-number:last-child,
+.rg-uuid:last-child,
+.rg-color:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.rg-number h3,
+.rg-uuid h3,
+.rg-color h3 {
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.rg-number input {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 8px;
+    border-radius: 6px;
+    width: 100px;
+    margin-right: 10px;
+}
+
+.random-generator button {
+    background-color: var(--accent);
+    color: var(--text-primary);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.random-generator span {
+    color: var(--accent);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+    
+    .nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .nav-btn {
+        flex: 1;
+        min-width: 120px;
+        text-align: center;
+    }
+    
+    .search-bar input {
+        width: 200px;
+    }
+}
