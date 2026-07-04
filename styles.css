@@ -192,124 +192,117 @@ body::before {
     color: #a855f7;
 }
 
-/* Admin Modal */
-.modal {
+/* Admin Page */
+.admin-page {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: var(--bg-primary);
     z-index: 1000;
     animation: fadeIn 0.3s ease;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.admin-page-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
 }
 
-.modal-content {
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 36px;
-    border-radius: 24px;
-    border: 1px solid var(--glass-border);
-    width: 100%;
-    max-width: 520px;
-    box-shadow: 
-        0 25px 50px -12px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(255, 255, 255, 0.05);
-    animation: scaleIn 0.3s ease;
-}
-
-@keyframes scaleIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.modal-header {
+.admin-page-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 28px;
+    margin-bottom: 40px;
     padding-bottom: 20px;
     border-bottom: 1px solid var(--border);
 }
 
-.modal-header h2 {
+.back-btn {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: var(--accent);
+    transform: translateX(-5px);
+}
+
+.admin-page-header h2 {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.admin-login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.admin-login-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 48px;
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+.admin-login-card h3 {
     background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-size: 28px;
     font-weight: 700;
-    letter-spacing: -0.5px;
+    margin-bottom: 16px;
 }
 
-.close-btn {
-    background: var(--bg-tertiary);
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    font-size: 24px;
-    cursor: pointer;
-    padding: 0;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    transition: all 0.2s ease;
-}
-
-.close-btn:hover {
-    background: var(--accent);
-    color: var(--text-primary);
-    transform: rotate(90deg);
-}
-
-#admin-login {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-#admin-login p {
+.admin-login-card p {
     color: var(--text-secondary);
     font-size: 15px;
-    line-height: 1.5;
+    margin-bottom: 28px;
 }
 
-#admin-login input {
+.admin-login-card input {
     background: var(--bg-tertiary);
     border: 1px solid var(--border);
     color: var(--text-primary);
     padding: 16px 20px;
     border-radius: 12px;
     font-size: 15px;
+    width: 100%;
+    margin-bottom: 20px;
     outline: none;
     transition: all 0.3s ease;
 }
 
-#admin-login input:focus {
+.admin-login-card input:focus {
     border-color: var(--accent);
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
-#admin-login button {
+.admin-login-card button {
     background: var(--accent-gradient);
     color: var(--text-primary);
     border: none;
@@ -318,18 +311,35 @@ body::before {
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
+    width: 100%;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
 }
 
-#admin-login button:hover {
+.admin-login-card button:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
 }
 
+.admin-settings-section {
+    animation: fadeInUp 0.5s ease;
+}
+
+.admin-settings-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
 .admin-section {
-    margin-bottom: 28px;
-    padding-bottom: 24px;
+    margin-bottom: 40px;
+    padding-bottom: 32px;
     border-bottom: 1px solid var(--border);
 }
 
@@ -344,41 +354,53 @@ body::before {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     letter-spacing: -0.5px;
 }
 
-.admin-section input {
+.logo-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-preview {
+    width: 200px;
+    height: 200px;
     background: var(--bg-tertiary);
-    border: 1px solid var(--border);
-    color: var(--text-primary);
-    padding: 14px 18px;
-    border-radius: 12px;
-    font-size: 15px;
-    width: 100%;
-    margin-bottom: 12px;
-    outline: none;
+    border: 2px dashed var(--border);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
     transition: all 0.3s ease;
 }
 
-.admin-section input:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+.logo-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-.admin-section input[type="color"] {
-    height: 50px;
-    cursor: pointer;
-    padding: 8px;
+.logo-preview span {
+    color: var(--text-secondary);
+    font-size: 24px;
+    font-weight: 700;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.admin-section button {
+.logo-upload button {
     background: var(--accent-gradient);
     color: var(--text-primary);
     border: none;
-    padding: 14px 24px;
+    padding: 14px 28px;
     border-radius: 12px;
     cursor: pointer;
     font-size: 15px;
@@ -387,7 +409,44 @@ body::before {
     box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
 }
 
-.admin-section button:hover {
+.logo-upload button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+}
+
+.logo-upload button.hidden {
+    display: none;
+}
+
+.color-picker {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.color-picker input[type="color"] {
+    width: 80px;
+    height: 50px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: none;
+}
+
+.color-picker button {
+    background: var(--accent-gradient);
+    color: var(--text-primary);
+    border: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.color-picker button:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
 }
@@ -412,23 +471,24 @@ body::before {
 }
 
 .admin-btn {
-    background: var(--bg-tertiary);
-    border: 1px solid var(--border);
-    font-size: 22px;
+    background: var(--accent-gradient);
+    border: none;
+    font-size: 20px;
     cursor: pointer;
-    padding: 12px;
-    border-radius: 12px;
+    padding: 14px;
+    border-radius: 14px;
     transition: all 0.3s ease;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--text-primary);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
 }
 
 .admin-btn:hover {
-    background: var(--accent);
-    transform: rotate(90deg);
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
 }
 
 .logo h1 {

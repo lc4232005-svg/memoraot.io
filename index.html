@@ -45,28 +45,44 @@
         </div>
     </div>
 
-    <!-- Admin Modal -->
-    <div id="admin-modal" class="modal hidden">
-        <div class="modal-content">
-            <div class="modal-header">
+    <!-- Admin Page -->
+    <div id="admin-page" class="admin-page hidden">
+        <div class="admin-page-container">
+            <div class="admin-page-header">
+                <button class="back-btn" id="back-to-chat">← Back to Chat</button>
                 <h2>Admin Panel</h2>
-                <button class="close-btn" id="close-admin">&times;</button>
             </div>
-            <div id="admin-login">
-                <p>Enter admin password to access settings</p>
-                <input type="password" id="admin-password" placeholder="Admin Password">
-                <button id="admin-login-btn">Access</button>
-            </div>
-            <div id="admin-settings" class="hidden">
-                <div class="admin-section">
-                    <h3>Change Logo</h3>
-                    <input type="text" id="new-logo" placeholder="Enter new logo text">
-                    <button id="save-logo">Save Logo</button>
+            
+            <div id="admin-login-section" class="admin-login-section">
+                <div class="admin-login-card">
+                    <h3>Admin Access</h3>
+                    <p>Enter admin password to access settings</p>
+                    <input type="password" id="admin-password" placeholder="Admin Password">
+                    <button id="admin-login-btn">Access Panel</button>
                 </div>
-                <div class="admin-section">
-                    <h3>Change Accent Color</h3>
-                    <input type="color" id="new-accent" value="#e94560">
-                    <button id="save-accent">Save Color</button>
+            </div>
+            
+            <div id="admin-settings-section" class="admin-settings-section hidden">
+                <div class="admin-settings-card">
+                    <div class="admin-section">
+                        <h3>Logo</h3>
+                        <div class="logo-upload">
+                            <div class="logo-preview" id="logo-preview">
+                                <span id="logo-text">Memora AI</span>
+                            </div>
+                            <input type="file" id="logo-upload" accept="image/*" style="display: none;">
+                            <button id="upload-logo-btn">Upload Logo</button>
+                            <button id="remove-logo-btn" class="hidden">Remove Logo</button>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <h3>Accent Color</h3>
+                        <div class="color-picker">
+                            <input type="color" id="new-accent" value="#6366f1">
+                            <button id="save-accent">Save Color</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -14,9 +14,27 @@ let appSettings = JSON.parse(localStorage.getItem('memora_settings')) || {
 
 // Apply saved settings
 function applySettings() {
-    document.querySelectorAll('#app-logo, #login-logo, #register-logo').forEach(el => {
-        el.textContent = appSettings.logo;
+    // Apply logo (text or image)
+    document.querySelectorAll('#app-logo, #login-logo, #register-logo, #logo-text').forEach(el => {
+        if (appSettings.logoImage) {
+            el.innerHTML = `<img src="${appSettings.logoImage}" alt="Logo" style="max-height: 50px; object-fit: contain;">`;
+        } else {
+            el.textContent = appSettings.logo;
+        }
     });
+    
+    // Update admin page logo preview
+    const logoPreview = document.getElementById('logo-preview');
+    if (logoPreview) {
+        if (appSettings.logoImage) {
+            logoPreview.innerHTML = `<img src="${appSettings.logoImage}" alt="Logo">`;
+            document.getElementById('remove-logo-btn').classList.remove('hidden');
+        } else {
+            logoPreview.innerHTML = `<span id="logo-text">${appSettings.logo}</span>`;
+            document.getElementById('remove-logo-btn').classList.add('hidden');
+        }
+    }
+    
     document.documentElement.style.setProperty('--accent', appSettings.accent);
 }
 
@@ -106,38 +124,53 @@ document.getElementById('logout-btn').addEventListener('click', () => {
     checkAuth();
 });
 
-// Admin Modal
+// Admin Page
 document.getElementById('admin-btn').addEventListener('click', () => {
-    document.getElementById('admin-modal').classList.remove('hidden');
-    document.getElementById('admin-login').classList.remove('hidden');
-    document.getElementById('admin-settings').classList.add('hidden');
+    document.getElementById('admin-page').classList.remove('hidden');
+    document.getElementById('admin-login-section').classList.remove('hidden');
+    document.getElementById('admin-settings-section').classList.add('hidden');
     document.getElementById('admin-password').value = '';
+    applySettings();
 });
 
-document.getElementById('close-admin').addEventListener('click', () => {
-    document.getElementById('admin-modal').classList.add('hidden');
+document.getElementById('back-to-chat').addEventListener('click', () => {
+    document.getElementById('admin-page').classList.add('hidden');
 });
 
 document.getElementById('admin-login-btn').addEventListener('click', () => {
     const password = document.getElementById('admin-password').value;
     if (password === ADMIN_PASSWORD) {
-        document.getElementById('admin-login').classList.add('hidden');
-        document.getElementById('admin-settings').classList.remove('hidden');
+        document.getElementById('admin-login-section').classList.add('hidden');
+        document.getElementById('admin-settings-section').classList.remove('hidden');
     } else {
         alert('Invalid admin password');
     }
 });
 
-// Change Logo
-document.getElementById('save-logo').addEventListener('click', () => {
-    const newLogo = document.getElementById('new-logo').value.trim();
-    if (newLogo) {
-        appSettings.logo = newLogo;
-        localStorage.setItem('memora_settings', JSON.stringify(appSettings));
-        applySettings();
-        document.getElementById('new-logo').value = '';
-        alert('Logo updated successfully!');
+// Logo Upload
+document.getElementById('upload-logo-btn').addEventListener('click', () => {
+    document.getElementById('logo-upload').click();
+});
+
+document.getElementById('logo-upload').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            appSettings.logoImage = event.target.result;
+            localStorage.setItem('memora_settings', JSON.stringify(appSettings));
+            applySettings();
+            alert('Logo uploaded successfully!');
+        };
+        reader.readAsDataURL(file);
     }
+});
+
+document.getElementById('remove-logo-btn').addEventListener('click', () => {
+    appSettings.logoImage = null;
+    localStorage.setItem('memora_settings', JSON.stringify(appSettings));
+    applySettings();
+    alert('Logo removed successfully!');
 });
 
 // Change Accent Color
