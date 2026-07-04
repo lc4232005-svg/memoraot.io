@@ -9,7 +9,7 @@ let users = JSON.parse(localStorage.getItem('memora_users')) || [];
 let currentUser = JSON.parse(localStorage.getItem('memora_current_user')) || null;
 let appSettings = JSON.parse(localStorage.getItem('memora_settings')) || {
     logo: 'Memora AI',
-    accent: '#e94560'
+    accent: '#6366f1'
 };
 
 // Apply saved settings
