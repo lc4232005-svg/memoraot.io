@@ -77,10 +77,48 @@
                     </div>
                     
                     <div class="admin-section">
-                        <h3>Accent Color</h3>
+                        <h3>Theme Presets</h3>
+                        <div class="theme-presets">
+                            <button class="theme-btn" data-theme="purple" data-accent="#6366f1">Purple</button>
+                            <button class="theme-btn" data-theme="blue" data-accent="#3b82f6">Blue</button>
+                            <button class="theme-btn" data-theme="green" data-accent="#10b981">Green</button>
+                            <button class="theme-btn" data-theme="orange" data-accent="#f59e0b">Orange</button>
+                            <button class="theme-btn" data-theme="pink" data-accent="#ec4899">Pink</button>
+                            <button class="theme-btn" data-theme="red" data-accent="#ef4444">Red</button>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <h3>Custom Accent Color</h3>
                         <div class="color-picker">
                             <input type="color" id="new-accent" value="#6366f1">
                             <button id="save-accent">Save Color</button>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <h3>Font Size</h3>
+                        <div class="font-size-control">
+                            <input type="range" id="font-size" min="12" max="20" value="15">
+                            <span id="font-size-value">15px</span>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <h3>User Management</h3>
+                        <div class="user-management">
+                            <div id="user-list" class="user-list"></div>
+                            <button id="refresh-users">Refresh Users</button>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <h3>Settings</h3>
+                        <div class="settings-actions">
+                            <button id="export-settings">Export Settings</button>
+                            <button id="import-settings">Import Settings</button>
+                            <input type="file" id="import-file" accept=".json" style="display: none;">
+                            <button id="reset-settings" class="danger-btn">Reset to Defaults</button>
                         </div>
                     </div>
                 </div>
