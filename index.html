@@ -105,6 +105,43 @@
                     </div>
                     
                     <div class="admin-section">
+                        <h3>Border Radius</h3>
+                        <div class="border-radius-control">
+                            <input type="range" id="border-radius" min="0" max="30" value="12">
+                            <span id="border-radius-value">12px</span>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <h3>Chat Style</h3>
+                        <div class="chat-style-options">
+                            <label class="style-option">
+                                <input type="radio" name="chat-style" value="modern" checked>
+                                <span>Modern</span>
+                            </label>
+                            <label class="style-option">
+                                <input type="radio" name="chat-style" value="classic">
+                                <span>Classic</span>
+                            </label>
+                            <label class="style-option">
+                                <input type="radio" name="chat-style" value="minimal">
+                                <span>Minimal</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <h3>Activation Keys</h3>
+                        <div class="key-management">
+                            <div id="key-list" class="key-list"></div>
+                            <div class="key-actions">
+                                <input type="text" id="new-key" placeholder="Enter new activation key">
+                                <button id="add-key">Add Key</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-section">
                         <h3>User Management</h3>
                         <div class="user-management">
                             <div id="user-list" class="user-list"></div>
@@ -134,6 +171,7 @@
             <div class="logo">
                 <h1 id="app-logo">Memora AI</h1>
             </div>
+            <button class="new-chat-btn" id="new-chat-btn">+ New Chat</button>
         </aside>
 
         <!-- Main Content -->
