@@ -78,262 +78,32 @@
         <aside class="sidebar">
             <button class="admin-btn" id="admin-btn">⚙️</button>
             <div class="logo">
-                <h1 id="app-logo">Memora</h1>
+                <h1 id="app-logo">Memora AI</h1>
             </div>
-            <nav class="nav">
-                <button class="nav-btn active" data-tool="dashboard">Dashboard</button>
-                <button class="nav-btn" data-tool="calculator">Calculator</button>
-                <button class="nav-btn" data-tool="password-manager">Password Manager</button>
-                <button class="nav-btn" data-tool="notes">Notes</button>
-                <button class="nav-btn" data-tool="calendar">Calendar</button>
-                <button class="nav-btn" data-tool="tasks">Tasks</button>
-                <button class="nav-btn" data-tool="weather">Weather</button>
-                <button class="nav-btn" data-tool="clock">Clock</button>
-                <button class="nav-btn" data-tool="qr-generator">QR Generator</button>
-                <button class="nav-btn" data-tool="password-generator">Password Generator</button>
-                <button class="nav-btn" data-tool="unit-converter">Unit Converter</button>
-                <button class="nav-btn" data-tool="currency-converter">Currency Converter</button>
-                <button class="nav-btn" data-tool="text-tools">Text Tools</button>
-                <button class="nav-btn" data-tool="random-generator">Random Generator</button>
-            </nav>
         </aside>
 
         <!-- Main Content -->
         <main class="main-content">
             <header class="header">
-                <div class="search-bar">
-                    <input type="text" placeholder="Search tools..." id="searchInput">
-                </div>
                 <div class="user-info">
                     <span class="user-name" id="current-username">Guest</span>
                     <button class="logout-btn" id="logout-btn">Logout</button>
                 </div>
             </header>
 
-            <!-- Tool Sections -->
-            <section id="dashboard" class="tool-section active">
-                <h2>Dashboard</h2>
-                <div class="dashboard-widgets">
-                    <div class="widget">
-                        <h3>Quick Stats</h3>
-                        <p>Welcome to Memora!</p>
+            <!-- AI Chat Interface -->
+            <section id="ai-chat" class="chat-section active">
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message ai-message">
+                            <div class="message-content">
+                                <p>Hello! I'm your AI assistant. How can I help you today?</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="widget">
-                        <h3>Recent Activity</h3>
-                        <p>No recent activity</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="calculator" class="tool-section">
-                <h2>Calculator</h2>
-                <div class="calculator">
-                    <input type="text" class="calc-display" id="calcDisplay" readonly>
-                    <div class="calc-buttons">
-                        <button class="calc-btn" data-value="7">7</button>
-                        <button class="calc-btn" data-value="8">8</button>
-                        <button class="calc-btn" data-value="9">9</button>
-                        <button class="calc-btn operator" data-value="/">/</button>
-                        <button class="calc-btn" data-value="4">4</button>
-                        <button class="calc-btn" data-value="5">5</button>
-                        <button class="calc-btn" data-value="6">6</button>
-                        <button class="calc-btn operator" data-value="*">*</button>
-                        <button class="calc-btn" data-value="1">1</button>
-                        <button class="calc-btn" data-value="2">2</button>
-                        <button class="calc-btn" data-value="3">3</button>
-                        <button class="calc-btn operator" data-value="-">-</button>
-                        <button class="calc-btn" data-value="0">0</button>
-                        <button class="calc-btn" data-value=".">.</button>
-                        <button class="calc-btn clear" data-value="C">C</button>
-                        <button class="calc-btn operator" data-value="+">+</button>
-                        <button class="calc-btn equals" data-value="=">=</button>
-                    </div>
-                </div>
-            </section>
-
-            <section id="password-manager" class="tool-section">
-                <h2>Password Manager</h2>
-                <div class="password-manager">
-                    <div class="pm-form">
-                        <input type="text" id="pm-website" placeholder="Website">
-                        <input type="text" id="pm-username" placeholder="Username">
-                        <input type="password" id="pm-password" placeholder="Password">
-                        <textarea id="pm-notes" placeholder="Notes"></textarea>
-                        <button id="pm-save">Save Password</button>
-                    </div>
-                    <div class="pm-list" id="pmList"></div>
-                </div>
-            </section>
-
-            <section id="notes" class="tool-section">
-                <h2>Notes</h2>
-                <div class="notes">
-                    <div class="note-form">
-                        <input type="text" id="note-title" placeholder="Note Title">
-                        <textarea id="note-content" placeholder="Note Content"></textarea>
-                        <button id="note-save">Save Note</button>
-                    </div>
-                    <div class="notes-list" id="notesList"></div>
-                </div>
-            </section>
-
-            <section id="calendar" class="tool-section">
-                <h2>Calendar</h2>
-                <div class="calendar">
-                    <div class="calendar-header">
-                        <button id="prevMonth">&lt;</button>
-                        <span id="currentMonth"></span>
-                        <button id="nextMonth">&gt;</button>
-                    </div>
-                    <div class="calendar-grid" id="calendarGrid"></div>
-                </div>
-            </section>
-
-            <section id="tasks" class="tool-section">
-                <h2>Tasks</h2>
-                <div class="tasks">
-                    <div class="task-form">
-                        <input type="text" id="task-input" placeholder="Add a task...">
-                        <button id="task-add">Add Task</button>
-                    </div>
-                    <ul class="task-list" id="taskList"></ul>
-                </div>
-            </section>
-
-            <section id="weather" class="tool-section">
-                <h2>Weather</h2>
-                <div class="weather">
-                    <input type="text" id="weather-city" placeholder="Enter city name">
-                    <button id="weather-search">Search</button>
-                    <div class="weather-display" id="weatherDisplay"></div>
-                </div>
-            </section>
-
-            <section id="clock" class="tool-section">
-                <h2>Clock</h2>
-                <div class="clock">
-                    <div class="clock-display" id="clockDisplay">00:00:00</div>
-                    <div class="clock-controls">
-                        <button id="stopwatch">Stopwatch</button>
-                        <button id="timer">Timer</button>
-                    </div>
-                </div>
-            </section>
-
-            <section id="qr-generator" class="tool-section">
-                <h2>QR Generator</h2>
-                <div class="qr-generator">
-                    <input type="text" id="qr-input" placeholder="Enter text or URL">
-                    <button id="qr-generate">Generate QR</button>
-                    <div class="qr-display" id="qrDisplay"></div>
-                </div>
-            </section>
-
-            <section id="password-generator" class="tool-section">
-                <h2>Password Generator</h2>
-                <div class="password-generator">
-                    <div class="pg-options">
-                        <label>
-                            Length: <input type="number" id="pg-length" value="16" min="8" max="128">
-                        </label>
-                        <label>
-                            <input type="checkbox" id="pg-uppercase" checked> Uppercase
-                        </label>
-                        <label>
-                            <input type="checkbox" id="pg-lowercase" checked> Lowercase
-                        </label>
-                        <label>
-                            <input type="checkbox" id="pg-numbers" checked> Numbers
-                        </label>
-                        <label>
-                            <input type="checkbox" id="pg-symbols" checked> Symbols
-                        </label>
-                    </div>
-                    <button id="pg-generate">Generate Password</button>
-                    <div class="pg-result">
-                        <input type="text" id="pg-result" readonly>
-                        <button id="pg-copy">Copy</button>
-                    </div>
-                </div>
-            </section>
-
-            <section id="unit-converter" class="tool-section">
-                <h2>Unit Converter</h2>
-                <div class="unit-converter">
-                    <select id="uc-type">
-                        <option value="length">Length</option>
-                        <option value="weight">Weight</option>
-                        <option value="temperature">Temperature</option>
-                    </select>
-                    <input type="number" id="uc-from" placeholder="From">
-                    <select id="uc-from-unit"></select>
-                    <span>=</span>
-                    <input type="number" id="uc-to" placeholder="To" readonly>
-                    <select id="uc-to-unit"></select>
-                    <button id="uc-convert">Convert</button>
-                </div>
-            </section>
-
-            <section id="currency-converter" class="tool-section">
-                <h2>Currency Converter</h2>
-                <div class="currency-converter">
-                    <input type="number" id="cc-amount" placeholder="Amount">
-                    <select id="cc-from">
-                        <option value="USD">USD</option>
-                        <option value="EUR">EUR</option>
-                        <option value="GBP">GBP</option>
-                        <option value="JPY">JPY</option>
-                    </select>
-                    <span>to</span>
-                    <select id="cc-to">
-                        <option value="EUR">EUR</option>
-                        <option value="USD">USD</option>
-                        <option value="GBP">GBP</option>
-                        <option value="JPY">JPY</option>
-                    </select>
-                    <button id="cc-convert">Convert</button>
-                    <div class="cc-result" id="ccResult"></div>
-                </div>
-            </section>
-
-            <section id="text-tools" class="tool-section">
-                <h2>Text Tools</h2>
-                <div class="text-tools">
-                    <textarea id="tt-input" placeholder="Enter text..."></textarea>
-                    <div class="tt-stats">
-                        <span>Characters: <span id="tt-chars">0</span></span>
-                        <span>Words: <span id="tt-words">0</span></span>
-                    </div>
-                    <div class="tt-actions">
-                        <button id="tt-upper">UPPERCASE</button>
-                        <button id="tt-lower">lowercase</button>
-                        <button id="tt-title">Title Case</button>
-                        <button id="tt-sentence">Sentence case</button>
-                        <button id="tt-duplicate">Remove Duplicates</button>
-                        <button id="tt-sort">Sort Lines</button>
-                    </div>
-                </div>
-            </section>
-
-            <section id="random-generator" class="tool-section">
-                <h2>Random Generator</h2>
-                <div class="random-generator">
-                    <div class="rg-number">
-                        <h3>Random Number</h3>
-                        <input type="number" id="rg-min" placeholder="Min" value="1">
-                        <input type="number" id="rg-max" placeholder="Max" value="100">
-                        <button id="rg-number-generate">Generate</button>
-                        <span id="rg-number-result"></span>
-                    </div>
-                    <div class="rg-uuid">
-                        <h3>UUID</h3>
-                        <button id="rg-uuid-generate">Generate UUID</button>
-                        <span id="rg-uuid-result"></span>
-                    </div>
-                    <div class="rg-color">
-                        <h3>Random Color</h3>
-                        <button id="rg-color-generate">Generate Color</button>
-                        <span id="rg-color-result"></span>
+                    <div class="chat-input-container">
+                        <textarea id="chatInput" placeholder="Type your message..." rows="1"></textarea>
+                        <button id="sendMessage">Send</button>
                     </div>
                 </div>
             </section>
