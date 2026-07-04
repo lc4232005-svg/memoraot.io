@@ -1,5 +1,154 @@
 // Memora - Vanilla JavaScript Implementation
 
+// Authentication System
+const VALID_ACTIVATION_KEY = 'josh-fkdj-fgjd';
+const ADMIN_PASSWORD = '0872';
+
+// Initialize users from localStorage
+let users = JSON.parse(localStorage.getItem('memora_users')) || [];
+let currentUser = JSON.parse(localStorage.getItem('memora_current_user')) || null;
+let appSettings = JSON.parse(localStorage.getItem('memora_settings')) || {
+    logo: 'Memora',
+    accent: '#e94560'
+};
+
+// Apply saved settings
+function applySettings() {
+    document.querySelectorAll('#app-logo, #login-logo, #register-logo').forEach(el => {
+        el.textContent = appSettings.logo;
+    });
+    document.documentElement.style.setProperty('--accent', appSettings.accent);
+}
+
+applySettings();
+
+// Check if user is logged in
+function checkAuth() {
+    if (currentUser) {
+        document.getElementById('login-page').classList.add('hidden');
+        document.getElementById('register-page').classList.add('hidden');
+        document.getElementById('app-container').classList.remove('hidden');
+        document.getElementById('current-username').textContent = currentUser.username;
+    } else {
+        document.getElementById('login-page').classList.remove('hidden');
+        document.getElementById('register-page').classList.add('hidden');
+        document.getElementById('app-container').classList.add('hidden');
+    }
+}
+
+checkAuth();
+
+// Login form
+document.getElementById('login-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = document.getElementById('login-username').value;
+    const password = document.getElementById('login-password').value;
+    
+    const user = users.find(u => u.username === username && u.password === password);
+    if (user) {
+        currentUser = user;
+        localStorage.setItem('memora_current_user', JSON.stringify(currentUser));
+        checkAuth();
+        document.getElementById('login-form').reset();
+    } else {
+        alert('Invalid username or password');
+    }
+});
+
+// Register form
+document.getElementById('register-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = document.getElementById('register-username').value;
+    const password = document.getElementById('register-password').value;
+    const confirmPassword = document.getElementById('register-confirm-password').value;
+    const key = document.getElementById('register-key').value;
+    
+    if (password !== confirmPassword) {
+        alert('Passwords do not match');
+        return;
+    }
+    
+    if (key !== VALID_ACTIVATION_KEY) {
+        alert('Invalid activation key');
+        return;
+    }
+    
+    if (users.find(u => u.username === username)) {
+        alert('Username already exists');
+        return;
+    }
+    
+    users.push({ username, password, key });
+    localStorage.setItem('memora_users', JSON.stringify(users));
+    alert('Registration successful! Please login.');
+    document.getElementById('register-form').reset();
+    document.getElementById('register-page').classList.add('hidden');
+    document.getElementById('login-page').classList.remove('hidden');
+});
+
+// Switch between login and register
+document.getElementById('show-register').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('login-page').classList.add('hidden');
+    document.getElementById('register-page').classList.remove('hidden');
+});
+
+document.getElementById('show-login').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('register-page').classList.add('hidden');
+    document.getElementById('login-page').classList.remove('hidden');
+});
+
+// Logout
+document.getElementById('logout-btn').addEventListener('click', () => {
+    currentUser = null;
+    localStorage.removeItem('memora_current_user');
+    checkAuth();
+});
+
+// Admin Modal
+document.getElementById('admin-btn').addEventListener('click', () => {
+    document.getElementById('admin-modal').classList.remove('hidden');
+    document.getElementById('admin-login').classList.remove('hidden');
+    document.getElementById('admin-settings').classList.add('hidden');
+    document.getElementById('admin-password').value = '';
+});
+
+document.getElementById('close-admin').addEventListener('click', () => {
+    document.getElementById('admin-modal').classList.add('hidden');
+});
+
+document.getElementById('admin-login-btn').addEventListener('click', () => {
+    const password = document.getElementById('admin-password').value;
+    if (password === ADMIN_PASSWORD) {
+        document.getElementById('admin-login').classList.add('hidden');
+        document.getElementById('admin-settings').classList.remove('hidden');
+    } else {
+        alert('Invalid admin password');
+    }
+});
+
+// Change Logo
+document.getElementById('save-logo').addEventListener('click', () => {
+    const newLogo = document.getElementById('new-logo').value.trim();
+    if (newLogo) {
+        appSettings.logo = newLogo;
+        localStorage.setItem('memora_settings', JSON.stringify(appSettings));
+        applySettings();
+        document.getElementById('new-logo').value = '';
+        alert('Logo updated successfully!');
+    }
+});
+
+// Change Accent Color
+document.getElementById('save-accent').addEventListener('click', () => {
+    const newAccent = document.getElementById('new-accent').value;
+    appSettings.accent = newAccent;
+    localStorage.setItem('memora_settings', JSON.stringify(appSettings));
+    applySettings();
+    alert('Accent color updated successfully!');
+});
+
 // Navigation
 document.querySelectorAll('.nav-btn').forEach(btn => {
     btn.addEventListener('click', () => {

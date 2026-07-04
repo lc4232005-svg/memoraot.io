@@ -7,11 +7,78 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <!-- Login Page -->
+    <div id="login-page" class="auth-page">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h1 id="login-logo">Memora</h1>
+                <p>Login to your account</p>
+            </div>
+            <form id="login-form">
+                <input type="text" id="login-username" placeholder="Username" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p class="auth-switch">
+                Don't have an account? <a href="#" id="show-register">Register</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Register Page -->
+    <div id="register-page" class="auth-page hidden">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h1 id="register-logo">Memora</h1>
+                <p>Create your account</p>
+            </div>
+            <form id="register-form">
+                <input type="text" id="register-username" placeholder="Username" required>
+                <input type="password" id="register-password" placeholder="Password" required>
+                <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+                <input type="text" id="register-key" placeholder="Activation Key" required>
+                <button type="submit">Register</button>
+            </form>
+            <p class="auth-switch">
+                Already have an account? <a href="#" id="show-login">Login</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Admin Modal -->
+    <div id="admin-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Admin Panel</h2>
+                <button class="close-btn" id="close-admin">&times;</button>
+            </div>
+            <div id="admin-login">
+                <p>Enter admin password to access settings</p>
+                <input type="password" id="admin-password" placeholder="Admin Password">
+                <button id="admin-login-btn">Access</button>
+            </div>
+            <div id="admin-settings" class="hidden">
+                <div class="admin-section">
+                    <h3>Change Logo</h3>
+                    <input type="text" id="new-logo" placeholder="Enter new logo text">
+                    <button id="save-logo">Save Logo</button>
+                </div>
+                <div class="admin-section">
+                    <h3>Change Accent Color</h3>
+                    <input type="color" id="new-accent" value="#e94560">
+                    <button id="save-accent">Save Color</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="app-container" class="container hidden">
         <!-- Sidebar -->
         <aside class="sidebar">
+            <button class="admin-btn" id="admin-btn">⚙️</button>
             <div class="logo">
-                <h1>Memora</h1>
+                <h1 id="app-logo">Memora</h1>
             </div>
             <nav class="nav">
                 <button class="nav-btn active" data-tool="dashboard">Dashboard</button>
@@ -38,7 +105,8 @@
                     <input type="text" placeholder="Search tools..." id="searchInput">
                 </div>
                 <div class="user-info">
-                    <span class="user-name">Guest</span>
+                    <span class="user-name" id="current-username">Guest</span>
+                    <button class="logout-btn" id="logout-btn">Logout</button>
                 </div>
             </header>
 
